@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GAME X | Premium Gaming Community</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050507;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* PREMIUM BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+    radial-gradient(circle at 15% 10%,#7b00ff45,transparent 32%),
+    radial-gradient(circle at 85% 35%,#00eaff28,transparent 30%),
+    radial-gradient(circle at 50% 100%,#ff008022,transparent 35%);
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.09;
+    background-image:
+    linear-gradient(#fff 1px,transparent 1px),
+    linear-gradient(90deg,#fff 1px,transparent 1px);
+    background-size:55px 55px;
+}
+
+/* HERO */
+.hero{
+    min-height:84vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:45px 20px 25px;
+}
+
+.hero-box{
+    max-width:900px;
+}
+
+/* LOGO */
+.logo{
+    width:250px;
+    max-width:75%;
+    height:auto;
+    display:block;
+    margin:0 auto 23px;
+    border-radius:25px;
+    box-shadow:
+    0 0 30px #00eaff40,
+    0 0 70px #7b00ff30;
+}
+
+/* BADGE */
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid #00eaff55;
+    background:#00eaff0b;
+    color:#00eaff;
+    border-radius:50px;
+    font-size:11px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+/* TITLE */
+h1{
+    font-size:clamp(42px,7vw,78px);
+    line-height:.98;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.gradient{
+    background:linear-gradient(
+        90deg,
+        #00eaff,
+        #8b5cff,
+        #ff2bd6
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-text{
+    max-width:680px;
+    margin:18px auto 23px;
+    color:#aaa;
+    font-size:16px;
+    line-height:1.65;
+}
+
+/* BUTTON */
+.join{
+    display:inline-block;
+    padding:15px 36px;
+    border-radius:12px;
+    text-decoration:none;
+    color:#020205;
+    background:linear-gradient(
+        90deg,
+        #00eaff,
+        #8b5cff
+    );
+    font-size:15px;
+    font-weight:900;
+    box-shadow:0 0 35px #00eaff40;
+    transition:.3s;
+}
+
+.join:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 50px #00eaff65;
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:28px;
+}
+
+.stat{
+    min-width:115px;
+    padding:12px 16px;
+    background:#ffffff07;
+    border:1px solid #ffffff0d;
+    border-radius:12px;
+}
+
+.stat strong{
+    display:block;
+    font-size:20px;
+}
+
+.stat span{
+    color:#777;
+    font-size:10px;
+}
+
+/* SECTIONS */
+section{
+    padding:32px 7%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:24px;
+}
+
+.title h2{
+    font-size:34px;
+    font-weight:800;
+}
+
+.title p{
+    color:#777;
+    margin-top:7px;
+    font-size:13px;
+}
+
+/* CARDS */
+.cards{
+    max-width:1080px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.card{
+    padding:22px 17px;
+    border-radius:17px;
+    background:
+    linear-gradient(
+        145deg,
+        #ffffff0a,
+        #ffffff03
+    );
+    border:1px solid #ffffff0e;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#00eaff45;
+    box-shadow:0 15px 35px #000;
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:11px;
+}
+
+.card h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* EARNING */
+.earning{
+    max-width:920px;
+    margin:auto;
+    padding:34px 25px;
+    text-align:center;
+    border-radius:22px;
+    background:
+    linear-gradient(
+        135deg,
+        #0b1220,
+        #16091f
+    );
+    border:1px solid #8b5cff40;
+    box-shadow:0 20px 60px #000;
+}
+
+.earning h2{
+    font-size:32px;
+    margin-bottom:11px;
+}
+
+.earning-text{
+    max-width:700px;
+    margin:auto;
+    color:#999;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.highlight{
+    color:#00eaff;
+}
+
+.earning-grid{
+    max-width:700px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    text-align:left;
+}
+
+.earning-item{
+    padding:13px;
+    border-radius:10px;
+    background:#ffffff07;
+    border:1px solid #ffffff09;
+    color:#ccc;
+    font-size:12px;
+}
+
+.earning-note{
+    color:#666;
+    font-size:11px;
+    margin:16px auto 20px;
+    max-width:650px;
+}
+
+/* RULES */
+.rules{
+    max-width:950px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.rule{
+    padding:21px;
+    border-radius:16px;
+    background:#ffffff06;
+    border:1px solid #ffffff0d;
+    text-align:center;
+}
+
+.rule-icon{
+    font-size:28px;
+    margin-bottom:9px;
+}
+
+.rule h3{
+    color:#00eaff;
+    margin-bottom:7px;
+    font-size:16px;
+}
+
+.rule p{
+    color:#888;
+    font-size:12px;
+    line-height:1.55;
+}
+
+/* RISKS */
+.risk{
+    border-color:#ff4b4b22;
+}
+
+.risk h3{
+    color:#ff7272;
+}
+
+/* FINAL CTA */
+.final{
+    padding:45px 20px;
+    text-align:center;
+}
+
+.final-box{
+    max-width:820px;
+    margin:auto;
+    padding:38px 20px;
+    border-radius:23px;
+    background:
+    linear-gradient(
+        135deg,
+        #080d18,
+        #110817
+    );
+    border:1px solid #00eaff28;
+}
+
+.final h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.final p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:21px;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:22px;
+    color:#555;
+    border-top:1px solid #ffffff08;
+    font-size:11px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .rules{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .hero{
+        min-height:80vh;
+    }
+
+    .logo{
+        width:190px;
+    }
+
+    h1{
+        letter-spacing:-1px;
+    }
+
+    .hero-text{
+        font-size:14px;
+    }
+
+    section{
+        padding:28px 17px;
+    }
+
+    .title h2{
+        font-size:29px;
+    }
+
+    .cards{
+        gap:8px;
+    }
+
+    .card{
+        padding:17px 12px;
+    }
+
+    .card h3{
+        font-size:14px;
+    }
+
+    .card p{
+        font-size:11px;
+    }
+
+    .earning{
+        padding:27px 15px;
+    }
+
+    .earning h2{
+        font-size:27px;
+    }
+
+    .earning-grid{
+        grid-template-columns:1fr;
+    }
+
+    .rules{
+        grid-template-columns:1fr;
+    }
+
+    .final h2{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+
+<!-- ================= HERO ================= -->
+
+<div class="hero">
+
+<div class="hero-box">
+
+<img src="logo.jpg"
+     alt="Gaming Logo"
+     class="logo">
+
+<div class="badge">
+🎮 PREMIUM GAMING COMMUNITY
+</div>
+
+<h1>
+PLAY SMART.<br>
+<span class="gradient">EARN & LEVEL UP.</span>
+</h1>
+
+<p class="hero-text">
+Gaming skills, challenges, community और earning opportunities
+को एक ही जगह discover करें। सही skills सीखें, opportunities
+explore करें और अपनी gaming journey को next level पर ले जाएं।
+</p>
+
+<a class="join"
+href="https://t.me/+SUaAu-RgVYg2MDE1"
+target="_blank"
+rel="noopener">
+🚀 JOIN CHANNEL
+</a>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong>🎮</strong>
+<span>Gaming</span>
+</div>
+
+<div class="stat">
+<strong>🏆</strong>
+<span>Challenges</span>
+</div>
+
+<div class="stat">
+<strong>⚡</strong>
+<span>Latest Updates</span>
+</div>
+
+<div class="stat">
+<strong>💎</strong>
+<span>Opportunities</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- ================= BENEFITS ================= -->
+
+<section>
+
+<div class="title">
+
+<h2>🎮 Gaming Benefits</h2>
+
+<p>
+Gaming के साथ skills और opportunities को explore करें।
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">🎯</div>
+
+<h3>Build Skills</h3>
+
+<p>
+Strategy, teamwork, communication और digital gaming skills
+को improve करें।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🏆</div>
+
+<h3>Gaming Challenges</h3>
+
+<p>
+Challenges, competitions और exciting gaming activities
+discover करें।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<h3>Latest Updates</h3>
+
+<p>
+Gaming news, updates, tips और community information
+से हमेशा updated रहें।
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">👥</div>
+
+<h3>Community</h3>
+
+<p>
+Gamers से connect करें, ideas share करें और एक-दूसरे
+से सीखें।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EARNING ================= -->
+
+<section>
+
+<div class="earning">
+
+<h2>
+💰 <span class="highlight">Gaming Skills</span>
+→ Earning Opportunities
+</h2>
+
+<p class="earning-text">
+Gaming सिर्फ entertainment तक सीमित नहीं है। अगर आप skills
+develop करते हैं, तो content creation, streaming, esports और
+digital work जैसी legitimate opportunities explore कर सकते हैं।
+</p>
+
+
+<div class="earning-grid">
+
+<div class="earning-item">
+🎥 Content Creation
+</div>
+
+<div class="earning-item">
+🎮 Gaming & Streaming
+</div>
+
+<div class="earning-item">
+🏆 Esports Opportunities
+</div>
+
+<div class="earning-item">
+💻 Digital Skills
+</div>
+
+<div class="earning-item">
+📱 Community Building
+</div>
+
+<div class="earning-item">
+🚀 Online Opportunities
+</div>
+
+</div>
+
+
+<p class="earning-text">
+<strong>
+अच्छी earning के लिए skill + consistency + सही opportunity जरूरी है।
+</strong>
+</p>
+
+<p class="earning-note">
+किसी भी income की guarantee नहीं है। Results व्यक्ति की skills,
+effort और opportunity पर depend करते हैं। Guaranteed profit,
+betting या gambling claims से सावधान रहें।
+</p>
+
+
+<a class="join"
+href="https://t.me/+SUaAu-RgVYg2MDE1"
+target="_blank"
+rel="noopener">
+🚀 EARNING OPPORTUNITIES के लिए JOIN करें
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ================= RULES ================= -->
+
+<section>
+
+<div class="title">
+
+<h2>📜 हमारे Rules</h2>
+
+<p>
+Better opportunities के लिए community rules follow करें।
+</p>
+
+</div>
+
+
+<div class="rules">
+
+<div class="rule">
+
+<div class="rule-icon">🔎</div>
+
+<h3>Verify First</h3>
+
+<p>
+किसी भी earning opportunity को समझे और verify किए बिना
+पैसा invest न करें।
+</p>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">⚡</div>
+
+<h3>Follow Rules</h3>
+
+<p>
+Channel की guidelines follow करें और suspicious activities
+से दूर रहें।
+</p>
+
+</div>
+
+
+<div class="rule">
+
+<div class="rule-icon">🔐</div>
+
+<h3>Stay Safe</h3>
+
+<p>
+OTP, password, private information और payment details
+किसी के साथ share न करें।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RISKS ================= -->
+
+<section>
+
+<div class="title">
+
+<h2>⚠️ Play Smart</h2>
+
+<p>
+Gaming के benefits के साथ risks को भी समझें।
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card risk">
+
+<div class="icon">⏰</div>
+
+<h3>Time Balance</h3>
+
+<p>
+Gaming को sleep, studies, work और daily routine के साथ
+balance रखें।
+</p>
+
+</div>
+
+
+<div class="card risk">
+
+<div class="icon">💰</div>
+
+<h3>Money Safety</h3>
+
+<p>
+ऐसा पैसा कभी risk न करें जिसे आप afford नहीं कर सकते।
+</p>
+
+</div>
+
+
+<div class="card risk">
+
+<div class="icon">🔐</div>
+
+<h3>Online Safety</h3>
+
+<p>
+OTP, passwords और payment details किसी stranger को न दें।
+</p>
+
+</div>
+
+
+<div class="card risk">
+
+<div class="icon">🚫</div>
+
+<h3>Scam Alert</h3>
+
+<p>
+Fake rewards, suspicious links और guaranteed profit claims
+से सावधान रहें।
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FINAL CTA ================= -->
+
+<div class="final">
+
+<div class="final-box">
+
+<h2>
+Ready to <span class="gradient">LEVEL UP?</span>
+</h2>
+
+<p>
+Gaming skills, latest updates और earning opportunities
+discover करने के लिए अभी channel join करें।
+</p>
+
+<a class="join"
+href="https://t.me/+SUaAu-RgVYg2MDE1"
+target="_blank"
+rel="noopener">
+🚀 JOIN CHANNEL NOW
+</a>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 Premium Gaming Community
+<br>
+Play Smart • Build Skills • Stay Safe
+
+</footer>
+
+</body>
+</html>
